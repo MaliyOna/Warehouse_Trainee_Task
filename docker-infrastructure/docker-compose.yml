@@ -1,0 +1,13 @@
+version: '3.4'
+
+name: innowise-infrastructure
+services:
+  mssqlserver:
+   restart: always
+   image: "mcr.microsoft.com/mssql/server:2022-latest"
+   environment:
+     ACCEPT_EULA: "Y"
+     SA_PASSWORD: "u7s8BkDq8lbDS3tCRPA5"
+     MSSQL_FORCE_NOENCRYPT: "true"
+   ports:
+     - 1434:1433
