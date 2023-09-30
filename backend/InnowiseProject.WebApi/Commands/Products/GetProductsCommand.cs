@@ -25,9 +25,8 @@ namespace InnowiseProject.WebApi.Commands.Products
         {
             var products = await productRepository.GetProducts();
 
-            return products == null
-                ? null
-                : products.Select(x => new ProductDTO
+            return products
+                .Select(x => new ProductDTO
                 {
                     Id = x.Id,
                     Name = x.Name,

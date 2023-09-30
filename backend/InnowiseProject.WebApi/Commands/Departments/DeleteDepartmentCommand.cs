@@ -21,6 +21,7 @@ namespace InnowiseProject.WebApi.Commands.Departments
         {
             this.departmentRepository = departmentRepository;
         }
+
         public async Task<Unit> Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
         {
             await departmentRepository.DeleteDepartment(request.Id);

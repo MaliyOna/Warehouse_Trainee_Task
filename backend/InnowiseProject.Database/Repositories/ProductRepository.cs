@@ -34,7 +34,7 @@ namespace InnowiseProject.Database.Repositories
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 
-            return product != null ? product : null;
+            return product;
         }
 
         public async Task<IReadOnlyList<Product>> GetProductsByName(string name)

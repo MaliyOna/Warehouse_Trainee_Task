@@ -1,0 +1,47 @@
+.workersPage__content__table {
+    border: gray solid 1px;
+    border-collapse: collapse;
+    margin-top: 10px;
+    width: 100%;
+
+    & thead {
+        & th {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+    }
+
+    & tbody {
+        background-color: white;
+
+        & td {
+            padding: 12px 15px;
+        }
+
+        & tr {
+            transition: background-color 0.3s ease-out 100ms;
+        }
+
+        & tr:hover {
+            background-color: #DCBBD5;
+        }
+    }
+
+    & tr,
+    th,
+    td {
+        border: gray solid 1px;
+        padding: 10px 0;
+    }
+}
+
+.workersPage__content {
+    .button {
+        margin-right: 5px;
+    }
+}
+
+.workersPage__selectedUser {
+    background-color: #2747a08a;
+}

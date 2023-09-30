@@ -1,0 +1,51 @@
+.input_label {
+    color: #4A4A4A;
+		font-size: 12px;
+		font-weight: 600;
+		line-height: 26px;
+		margin-left: 7px;
+}
+
+.input_input[type="text"], .input_input[type="password"], .input_input[type="email"], .input_input[type="number"] {
+    border-radius: 3px;
+    background-color: #F5F5F5;
+    outline: none;
+    color: #212121;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    padding: 7px;
+    box-sizing: border-box;
+    border: none;
+    width: 100%;
+    transition: .3s;
+
+    &::placeholder {
+      color: #757575;
+    }
+  
+    &:hover:not([disabled]):not(:focus):not(.invalid) {
+      background-color: rgba(0, 229, 255, 0.1);
+      transition: .3s;
+    }
+  
+    &:focus {
+      background-color: #00B8D4;
+      color: #fff;
+      transition: .3s;
+    }
+  
+    &[disabled] {
+      &::placeholder {
+        color: #E0E0E0;
+      }
+    }
+}
+
+.input__error {
+  color: #CF200C;
+}
+
+.input_input_error{
+  background-color: #f1c8c3 !important;
+}

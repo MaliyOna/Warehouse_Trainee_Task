@@ -1,17 +1,19 @@
 ﻿using InnowiseProject.WebApi.Commands.Departments;
 using InnowiseProject.WebApi.DTO;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InnowiseProject.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DepartmentController : ControllerBase
+    [Authorize]
+    public class DepartmentsController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public DepartmentController(IMediator mediator)
+        public DepartmentsController(IMediator mediator)
         {
             this.mediator = mediator;
         }

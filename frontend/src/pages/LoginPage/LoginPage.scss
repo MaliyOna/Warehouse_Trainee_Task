@@ -1,0 +1,20 @@
+.loginPage {
+    background-color: white;
+    width: 358px;
+    margin: 15% auto;
+    padding: 25px 15px;
+    box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 3px;
+
+    .input {
+        margin-top: 15px;
+    }
+}
+
+.loginPage__title {
+    font-size: 32px;
+    line-height: 29px;
+    font-weight: 600;
+    color: #484848;
+    margin: 0 30px 24px 6px;
+}

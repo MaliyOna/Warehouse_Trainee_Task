@@ -2,17 +2,19 @@
 using InnowiseProject.WebApi.Commands.Products;
 using InnowiseProject.WebApi.DTO;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InnowiseProject.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductController : ControllerBase
+    [Authorize]
+    public class ProductsController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public ProductController(IMediator mediator)
+        public ProductsController(IMediator mediator)
         {
             this.mediator = mediator;
         }

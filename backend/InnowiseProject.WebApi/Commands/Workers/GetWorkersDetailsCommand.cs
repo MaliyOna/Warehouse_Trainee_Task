@@ -25,21 +25,18 @@ namespace InnowiseProject.WebApi.Commands.Workers
         {
             var workers = await workerRepository.GetWorkersDetails();
 
-            return workers == null
-                ? null
-                : workers.Select(x => new WorkerDetailsDTO
+            return workers.Select(x => new WorkerDetailsDTO
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                Departments = x.Departments
+                .Select(y => new DepartmentDTO
                 {
-                    Id = x.Id,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    Departments = x.Departments == null
-                        ? null
-                        : x.Departments.Select(y => new DepartmentDTO
-                        {
-                            Id = y.Id,
-                            Name = y.Name,
-                        }).ToList(),
-                });
+                    Id = y.Id,
+                    Name = y.Name,
+                }).ToList(),
+            });
         }
     }
 }

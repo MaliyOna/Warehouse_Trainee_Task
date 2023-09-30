@@ -35,7 +35,7 @@ namespace InnowiseProject.Database.Repositories
                 .Where(x => x.Id == workerId)
                 .FirstOrDefaultAsync();
 
-            return worker != null ? worker : null;
+            return worker;
         }
 
         public async Task<Worker> GetWorkerDetailsById(string workerId)
@@ -45,7 +45,7 @@ namespace InnowiseProject.Database.Repositories
                 .Where(x => x.Id == workerId)
                 .FirstOrDefaultAsync();
 
-            return worker != null ? worker : null;
+            return worker;
         }
 
         public async Task<IReadOnlyList<Worker>> GetWorkers()

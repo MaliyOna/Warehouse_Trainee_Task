@@ -24,9 +24,8 @@ namespace InnowiseProject.WebApi.Commands.Departments
         {
             var departments = await departmentRepository.GetDepartments();
 
-            return departments == null
-                ? null
-                : departments.Select(x => new DepartmentDTO
+            return departments
+                .Select(x => new DepartmentDTO
                 {
                     Id = x.Id,
                     Name = x.Name,

@@ -1,0 +1,118 @@
+.menu {
+  width: 80%;
+  margin: auto;
+  max-width: 1200px;
+
+  #menu__input {
+    display: none;
+  }
+
+  .menuName {
+    display: none;
+  }
+
+  .menuItems {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+@media (max-width: 677px) {
+  .menu {
+    #menu__input {
+      opacity: 0;
+    }
+
+    #menu__input:checked+.menu__button>span {
+      transform: rotate(45deg);
+    }
+
+    #menu__input:checked+.menu__button>span::before {
+      top: 0;
+      transform: rotate(0deg);
+    }
+
+    #menu__input:checked+.menu__button>span::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+
+    #menu__input:checked~.menuItems {
+      left: 0 !important;
+    }
+
+    .menu__button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+      z-index: 8;
+    }
+
+    .menu__button>span,
+    .menu__button>span::before,
+    .menu__button>span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: rgb(207, 200, 207);
+      transition-duration: .25s;
+    }
+
+    .menu__button>span::before {
+      content: '';
+      top: -8px;
+    }
+
+    .menu__button>span::after {
+      content: '';
+      top: 8px;
+    }
+
+    .menuItems {
+      z-index: 7;
+      display: block;
+      position: fixed;
+      .menuName{
+        display: block;
+      }
+      top: 0;
+      left: -100%;
+      width: 300px;
+      height: 100%;
+      margin: 0;
+      padding: 80px 0;
+      list-style: none;
+      background-color: #ECEFF1;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+      transition-duration: .25s;
+    }
+
+    .menuItem {
+      Button{
+        margin-top: 0;
+      }
+      display: block;
+      padding: 12px 12px 12px 12px;
+      color: #333;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      transition-duration: .25s;
+    }
+
+    .menuItem:hover {
+      background-color: #CFD8DC;
+    }
+
+    .menuName{
+      padding-left: 15px;
+      margin-bottom: 0px;
+    }
+  }
+}

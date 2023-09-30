@@ -22,7 +22,7 @@ namespace InnowiseProject.WebApi.Commands.Departments
         {
             this.departmentRepository = departmentRepository;
         }
-
+        
         public async Task<DepartmentDTO> Handle(GetDepartmentByIdCommand request, CancellationToken cancellationToken)
         {
             var department = await departmentRepository.GetDepartmentById(request.Id);

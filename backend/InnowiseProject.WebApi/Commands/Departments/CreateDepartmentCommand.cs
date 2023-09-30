@@ -14,6 +14,7 @@ namespace InnowiseProject.WebApi.Commands.Departments
 
         public DepartmentDTO DepartmentDTO { get; }
     }
+
     public class CreateDepartmentCommandHandler : IRequestHandler<CreateDepartmentCommand>
     {
         private readonly IDepartmentRepository departmentRepository;
@@ -22,6 +23,7 @@ namespace InnowiseProject.WebApi.Commands.Departments
         {
             this.departmentRepository = departmentRepository;
         }
+
         public async Task<Unit> Handle(CreateDepartmentCommand request, CancellationToken cancellationToken)
         {
             var departmentDTO = request.DepartmentDTO;

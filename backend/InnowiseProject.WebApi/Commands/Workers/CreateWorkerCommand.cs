@@ -33,6 +33,7 @@ namespace InnowiseProject.WebApi.Commands.Workers
             {
                 FirstName = workerDTO.FirstName,
                 LastName = workerDTO.LastName,
+                UserName = workerDTO.FirstName + workerDTO.LastName,
             };
 
             await workerRepository.CreateWorker(worker);

@@ -25,9 +25,7 @@ namespace InnowiseProject.WebApi.Commands.Workers
         {
             var workers = await workerRepository.GetWorkers();
 
-            return workers == null
-            ? null
-            : workers.Select(x => new WorkerDTO
+            return workers.Where(x => !x.IsSystem).Select(x => new WorkerDTO
             {
                 Id = x.Id,
                 FirstName = x.FirstName,

@@ -9,6 +9,8 @@ namespace InnowiseProject.Database.Models
 
         public string LastName { get; set; }
 
+        public bool IsSystem { get; set; }
+
         public ICollection<Department> Departments { get; set; }
     }
 }

@@ -1,13 +1,14 @@
-﻿using InnowiseProject.WebApi.Commands.Products;
-using InnowiseProject.WebApi.Commands.Workers;
+﻿using InnowiseProject.WebApi.Commands.Workers;
 using InnowiseProject.WebApi.DTO;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InnowiseProject.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class WorkersController : ControllerBase
     {
         private readonly IMediator mediator;
@@ -57,6 +58,12 @@ namespace InnowiseProject.WebApi.Controllers
         public async Task<IEnumerable<WorkerDetailsDTO>> GetWorkersDetails()
         {
             return await mediator.Send(new GetWorkersDetailsCommand());
+        }
+
+        [HttpPut]
+        public async Task UpdateWorker(WorkerDTO workerDTO)
+        {
+            await mediator.Send(new UpdateWorkerCommand(workerDTO));
         }
     }
 }

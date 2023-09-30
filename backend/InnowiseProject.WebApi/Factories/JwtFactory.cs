@@ -14,11 +14,12 @@ namespace InnowiseProject.WebApi.Factories
             this.authConfig = authConfig.Value;
         }
 
-        public string GenerateToken(string userId)
+        public string GenerateToken(string userId, string role)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userId),
+                new Claim("role", role)
             };
 
             var jwt = new JwtSecurityToken(

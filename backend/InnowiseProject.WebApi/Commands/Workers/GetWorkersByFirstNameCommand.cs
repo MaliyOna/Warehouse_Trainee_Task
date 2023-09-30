@@ -28,15 +28,13 @@ namespace InnowiseProject.WebApi.Commands.Workers
         {
             var workers = await workerRepository.GetWorkersByFirstName(request.FirstName);
 
-            return workers == null
-                ? null
-                : workers.Select(x => new WorkerDTO
-                {
-                    Id = x.Id,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                })
-                .ToList();
+            return workers.Select(x => new WorkerDTO
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+            })
+            .ToList();
         }
     }
 }

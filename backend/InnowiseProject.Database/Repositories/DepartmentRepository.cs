@@ -35,7 +35,7 @@ namespace InnowiseProject.Database.Repositories
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 
-            return department != null ? department : null;
+            return department;
         }
 
         public async Task<IReadOnlyList<Department>> GetDepartmentsByName(string name)
