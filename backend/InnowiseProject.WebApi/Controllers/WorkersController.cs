@@ -8,52 +8,52 @@ namespace InnowiseProject.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class WorkerController : ControllerBase
+    public class WorkersController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public WorkerController(IMediator mediator)
+        public WorkersController(IMediator mediator)
         {
             this.mediator = mediator;
         }
 
-        [HttpPost()]
+        [HttpPost]
         public async Task CreateWorker(WorkerDTO workerDTO)
         {
             await mediator.Send(new CreateWorkerCommand(workerDTO));
         }
 
-        [HttpDelete()]
-        public async Task DeleteWorker(WorkerDTO workerDTO)
+        [HttpDelete("{id}")]
+        public async Task DeleteWorker(string id)
         {
-            await mediator.Send(new DeleteWorkerCommand(workerDTO.Id));
+            await mediator.Send(new DeleteWorkerCommand(id));
         }
 
-        [HttpGet()]
+        [HttpGet]
         public async Task<IEnumerable<WorkerDTO>> GetWorkers()
         {
             return await mediator.Send(new GetWorkersCommand());
         }
 
-        [HttpGet("workerById")]
-        public async Task<WorkerDTO> GetWorkerById(WorkerDTO workerDTO)
+        [HttpGet("{id}")]
+        public async Task<WorkerDTO> GetWorkerById(string id)
         {
-            return await mediator.Send(new GetWorkerByIdCommand(workerDTO.Id));
+            return await mediator.Send(new GetWorkerByIdCommand(id));
         }
         
-        [HttpGet("workerDetailsById")]
-        public async Task<WorkerDetailsDTO> GetWorkerDetailsById(WorkerDTO workerDTO)
+        [HttpGet("{id}/details")]
+        public async Task<WorkerDetailsDTO> GetWorkerDetailsById(string id)
         {
-            return await mediator.Send(new GetWorkerDetailsByIdCommand(workerDTO.Id));
+            return await mediator.Send(new GetWorkerDetailsByIdCommand(id));
         }
         
-        [HttpGet("workersByFirstName")]
-        public async Task<IEnumerable<WorkerDTO>> GetWorkersByFirstName(WorkerDTO workerDTO)
+        [HttpGet("by-first-name")]
+        public async Task<IEnumerable<WorkerDTO>> GetWorkersByFirstName([FromQuery] string firstName)
         {
-            return await mediator.Send(new GetWorkersByFirstNameCommand(workerDTO.FirstName));
+            return await mediator.Send(new GetWorkersByFirstNameCommand(firstName));
         }
 
-        [HttpGet("workersDetails")]
+        [HttpGet("details")]
         public async Task<IEnumerable<WorkerDetailsDTO>> GetWorkersDetails()
         {
             return await mediator.Send(new GetWorkersDetailsCommand());

@@ -2,10 +2,13 @@
 using InnowiseProject.Database;
 using InnowiseProject.Database.Repositories;
 using InnowiseProject.Database.Repositories.Interfaces;
+using InnowiseProject.WebApi.Middlewares;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Events;
 using System.Reflection;
 
 namespace InnowiseProject
@@ -23,21 +26,29 @@ namespace InnowiseProject
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllers(
+            builder.Host.UseSerilog((hostContext, services, configuration) => {
+                configuration.MinimumLevel.Information();
+                configuration.WriteTo.Console();
+                configuration.WriteTo.File("logs/app.txt", rollingInterval: RollingInterval.Day);
+            });
+
+            var services = builder.Services;
+
+            services.AddControllers(
                 options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
 
-            builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
-            builder.Services.AddScoped<IWorkerRepository, WorkerRepository>();
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IWorkerRepository, WorkerRepository>();
 
             string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
 
-            //builder.Services.AddIdentity<User, Role>(options =>
+            //services.AddIdentity<User, Role>(options =>
             //{
             //    options.Password.RequireDigit = false;
             //    options.Password.RequireLowercase = false;
@@ -57,10 +68,11 @@ namespace InnowiseProject
                 app.UseSwaggerUI();
             }
 
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

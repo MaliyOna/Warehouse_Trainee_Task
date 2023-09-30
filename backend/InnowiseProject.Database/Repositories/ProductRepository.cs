@@ -1,11 +1,6 @@
 ﻿using InnowiseProject.Database.Models;
 using InnowiseProject.Database.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Z.EntityFramework.Plus;
 
 namespace InnowiseProject.Database.Repositories
@@ -27,29 +22,39 @@ namespace InnowiseProject.Database.Repositories
 
         public async Task DeleteProduct(int id)
         {
-            await dbContext.Products.Where(x => x.Id == id).DeleteAsync();
+            await dbContext.Products
+                .Where(x => x.Id == id)
+                .DeleteAsync();
             await dbContext.SaveChangesAsync();
         }
 
         public async Task<Product> GetProductById(int id)
         {
-            var product = await dbContext.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
+            var product = await dbContext.Products
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+
             return product != null ? product : null;
         }
 
-        public async Task<List<Product>> GetProductsByName(string name)
+        public async Task<IReadOnlyList<Product>> GetProductsByName(string name)
         {
-            return await dbContext.Products.Where(x => x.Name == name).ToListAsync();
+            return await dbContext.Products
+                .Where(x => x.Name == name)
+                .ToListAsync();
         }
 
-        public async Task<List<Product>> GetProducts()
+        public async Task<IReadOnlyList<Product>> GetProducts()
         {
             return await dbContext.Products.ToListAsync();
         }
 
         public async Task UpdateProduct(int id, string name, int departmentId)
         {
-            var product = await dbContext.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
+            var product = await dbContext.Products
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+
             product.Name = name;
             product.DepartmentId = departmentId;
 

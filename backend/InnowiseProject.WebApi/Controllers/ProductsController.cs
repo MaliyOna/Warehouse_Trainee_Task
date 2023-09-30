@@ -17,37 +17,37 @@ namespace InnowiseProject.WebApi.Controllers
             this.mediator = mediator;
         }
 
-        [HttpPost()]
+        [HttpPost]
         public async Task CreateProduct(ProductDTO productDTO)
         {
             await mediator.Send(new CreateProductCommand(productDTO));
         }
 
-        [HttpDelete()]
-        public async Task DeleteProduct(ProductDTO productDTO)
+        [HttpDelete("{id}")]
+        public async Task DeleteProduct(int id)
         {
-            await mediator.Send(new DeleteProductCommand(productDTO.Id));
+            await mediator.Send(new DeleteProductCommand(id));
         }
 
-        [HttpGet()]
+        [HttpGet]
         public async Task<IEnumerable<ProductDTO>> GetProducts()
         {
             return await mediator.Send(new GetProductsCommand());
         }
 
-        [HttpGet("productById")]
-        public async Task<ProductDTO> GetProductById(ProductDTO productDTO)
+        [HttpGet("{id}")]
+        public async Task<ProductDTO> GetProductById(int id)
         {
-            return await mediator.Send(new GetProductByIdCommand(productDTO.Id));
+            return await mediator.Send(new GetProductByIdCommand(id));
         }
 
-        [HttpGet("productsByName")]
-        public async Task<IEnumerable<ProductDTO>> GetProductsByName(ProductDTO productDTO)
+        [HttpGet("by-name")]
+        public async Task<IEnumerable<ProductDTO>> GetProductsByName([FromQuery] string name)
         {
-            return await mediator.Send(new GetProductsByNameCommand(productDTO.Name));
+            return await mediator.Send(new GetProductsByNameCommand(name));
         }
 
-        [HttpPut()]
+        [HttpPut]
         public async Task UpdateProductName(ProductDTO productDTO)
         {
             await mediator.Send(new UpdateProductCommand(productDTO));
