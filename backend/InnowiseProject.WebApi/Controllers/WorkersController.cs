@@ -1,5 +1,5 @@
-﻿using InnowiseProject.WebApi.Commands.Workers;
-using InnowiseProject.WebApi.DTO;
+﻿using InnowiseProject.Application.Commands.Workers;
+using InnowiseProject.Application.DTO;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -41,13 +41,13 @@ namespace InnowiseProject.WebApi.Controllers
         {
             return await mediator.Send(new GetWorkerByIdCommand(id));
         }
-        
+
         [HttpGet("{id}/details")]
         public async Task<WorkerDetailsDTO> GetWorkerDetailsById(string id)
         {
             return await mediator.Send(new GetWorkerDetailsByIdCommand(id));
         }
-        
+
         [HttpGet("by-first-name")]
         public async Task<IEnumerable<WorkerDTO>> GetWorkersByFirstName([FromQuery] string firstName)
         {

@@ -50,13 +50,9 @@ namespace InnowiseProject.Database.Repositories
             return await dbContext.Departments.ToListAsync();
         }
 
-        public async Task UpdateDepartmentName(int id, string name)
+        public async Task UpdateDepartmentName(Department department)
         {
-            var department = await dbContext.Departments
-                .Where(x => x.Id == id)
-                .FirstOrDefaultAsync();
-
-            department.Name = name;
+            dbContext.Departments.Update(department);
             await dbContext.SaveChangesAsync();
         }
 
@@ -71,10 +67,44 @@ namespace InnowiseProject.Database.Repositories
         public async Task AddProduct(Product product)
         {
             var department = await dbContext.Departments
+                .Include(x => x.Products)
                 .Where(x => x.Id == product.DepartmentId)
                 .FirstOrDefaultAsync();
 
             department.Products.Add(product);
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Department> GetDepartmentByIdDetails(int id)
+        {
+            var department = await dbContext.Departments
+                .Include(x => x.Workers)
+                .Include(x => x.Products)
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+
+            return department;
+        }
+
+        public async Task AddWorker(Worker worker, int departmentId)
+        {
+            var department = await dbContext.Departments
+                .Include(x => x.Workers)
+                .Where(x => x.Id == departmentId)
+                .FirstOrDefaultAsync();
+
+            department.Workers.Add(worker);
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteWorker(Worker worker, int departmentId)
+        {
+            var department = await dbContext.Departments
+                .Include(x => x.Workers)
+                .Where(x => x.Id == departmentId)
+                .FirstOrDefaultAsync();
+
+            department.Workers.Remove(worker);
             await dbContext.SaveChangesAsync();
         }
     }

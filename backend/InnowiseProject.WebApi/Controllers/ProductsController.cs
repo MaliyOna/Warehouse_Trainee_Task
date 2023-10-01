@@ -1,6 +1,5 @@
-﻿using InnowiseProject.WebApi.Commands.Departments;
-using InnowiseProject.WebApi.Commands.Products;
-using InnowiseProject.WebApi.DTO;
+﻿using InnowiseProject.Application.Commands.Products;
+using InnowiseProject.Application.DTO;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

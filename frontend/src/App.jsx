@@ -4,6 +4,7 @@ import { LoginPage } from './pages/LoginPage/LoginPage';
 import { Toaster } from 'react-hot-toast';
 import { WorkersPage } from './pages/WorkersPage/WorkersPage';
 import { DepartmentsPage } from './pages/DepartmentsPage/DepartmentsPage';
+import { DepartmentUpdatePage } from './pages/DepartmentUpdatePage/DepartmentUpdatePage';
 
 export class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ export class App extends React.Component {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/workers" element={<WorkersPage />} />
               <Route path="/departments" element={<DepartmentsPage />} />
+              <Route path="/departments/:departmentId" element={<DepartmentUpdatePage />} />
               <Route
                 path="*"
                 element={<Navigate to="/login" />}

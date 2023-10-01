@@ -14,10 +14,16 @@ namespace InnowiseProject.Database.Repositories.Interfaces
 
         Task<Worker> GetWorkerDetailsById(string workerId);
 
+        Task<IReadOnlyList<Worker>> GetWorkersByDepartment(int departmentId);
+
         Task<IReadOnlyList<Worker>> GetWorkersByFirstName(string firstName);
 
         Task<IReadOnlyList<Worker>> GetWorkers();
 
         Task<IReadOnlyList<Worker>> GetWorkersDetails();
+
+        Task AddDepartment(Department department, string workerId);
+
+        Task DeleteDepartment(Department department, string workerId);
     }
 }

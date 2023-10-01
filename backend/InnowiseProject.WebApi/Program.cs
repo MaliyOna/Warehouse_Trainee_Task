@@ -1,4 +1,5 @@
 
+using InnowiseProject.Application;
 using InnowiseProject.Database;
 using InnowiseProject.Database.Models;
 using InnowiseProject.Database.Repositories;
@@ -45,13 +46,11 @@ namespace InnowiseProject
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IWorkerRepository, WorkerRepository>();
+            services.AddApplicationServices();
 
             string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+
+            services.AddDatabaseServices(connection);
 
             services.AddCors(options =>
             {

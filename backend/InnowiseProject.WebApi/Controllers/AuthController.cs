@@ -1,5 +1,5 @@
-﻿using InnowiseProject.Database.Models;
-using InnowiseProject.WebApi.DTO;
+﻿using InnowiseProject.Application.DTO;
+using InnowiseProject.Database.Models;
 using InnowiseProject.WebApi.Factories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

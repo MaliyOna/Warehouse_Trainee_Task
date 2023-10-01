@@ -49,16 +49,15 @@ namespace InnowiseProject.Database.Repositories
             return await dbContext.Products.ToListAsync();
         }
 
-        public async Task UpdateProduct(int id, string name, int departmentId)
+        public async Task UpdateProduct(Product product)
         {
-            var product = await dbContext.Products
-                .Where(x => x.Id == id)
-                .FirstOrDefaultAsync();
-
-            product.Name = name;
-            product.DepartmentId = departmentId;
-
+            dbContext.Products.Update(product);
             await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Product>> GetProductsByDepartment(int departmentId)
+        {
+            return await dbContext.Products.Where(x => x.DepartmentId == departmentId).ToListAsync();
         }
     }
 }

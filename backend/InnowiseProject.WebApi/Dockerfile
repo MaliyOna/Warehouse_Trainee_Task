@@ -7,6 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["InnowiseProject.WebApi/InnowiseProject.WebApi.csproj", "InnowiseProject.WebApi/"]
 COPY ["InnowiseProject.Database/InnowiseProject.Database.csproj", "InnowiseProject.Database/"]
+COPY ["InnowiseProject.Application/InnowiseProject.Application.csproj", "InnowiseProject.Application/"]
 RUN dotnet restore "InnowiseProject.WebApi/InnowiseProject.WebApi.csproj"
 COPY . .
 WORKDIR "/src/InnowiseProject.WebApi"

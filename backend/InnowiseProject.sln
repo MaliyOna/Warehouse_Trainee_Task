@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InnowiseProject.Database", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InnowiseProject.WebApi", "InnowiseProject.WebApi\InnowiseProject.WebApi.csproj", "{60B279FA-2616-4835-8662-946B178B8393}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnowiseProject.Application", "InnowiseProject.Application\InnowiseProject.Application.csproj", "{0263C1BB-B8D6-4C5E-BA18-80EC9AE14F6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnowiseProject.Application.UnitTests", "InnowiseProject.Application.UnitTests\InnowiseProject.Application.UnitTests.csproj", "{FA0DFBE8-FEBB-48E5-A479-0C56618A7285}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{60B279FA-2616-4835-8662-946B178B8393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60B279FA-2616-4835-8662-946B178B8393}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60B279FA-2616-4835-8662-946B178B8393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0263C1BB-B8D6-4C5E-BA18-80EC9AE14F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0263C1BB-B8D6-4C5E-BA18-80EC9AE14F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0263C1BB-B8D6-4C5E-BA18-80EC9AE14F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0263C1BB-B8D6-4C5E-BA18-80EC9AE14F6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA0DFBE8-FEBB-48E5-A479-0C56618A7285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA0DFBE8-FEBB-48E5-A479-0C56618A7285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA0DFBE8-FEBB-48E5-A479-0C56618A7285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA0DFBE8-FEBB-48E5-A479-0C56618A7285}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
