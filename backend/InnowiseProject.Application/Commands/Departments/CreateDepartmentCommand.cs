@@ -31,8 +31,6 @@ namespace InnowiseProject.Application.Commands.Departments
             var department = new Department
             {
                 Name = departmentDTO.Name,
-                Products = null,
-                Workers = null
             };
 
             await departmentRepository.CreateDepartment(department);

@@ -19,12 +19,10 @@ namespace InnowiseProject.Application.Commands.Products
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
     {
         private readonly IProductRepository productRepository;
-        private readonly IDepartmentRepository departmentRepository;
 
-        public UpdateProductCommandHandler(IProductRepository productRepository, IDepartmentRepository departmentRepository)
+        public UpdateProductCommandHandler(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
-            this.departmentRepository = departmentRepository;
         }
 
         public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)

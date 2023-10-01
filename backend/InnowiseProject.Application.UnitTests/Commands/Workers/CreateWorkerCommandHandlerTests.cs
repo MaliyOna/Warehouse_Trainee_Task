@@ -10,7 +10,7 @@ namespace InnowiseProject.Application.UnitTests.Commands.Workers
     public class CreateWorkerCommandHandlerTests
     {
         [Fact]
-        public async Task Handle_CreatesAWorkerInRepository()
+        public async Task Handle_CreatesWorkerInRepository()
         {
             // Arrange
             var workerDTO = new WorkerDTO
@@ -22,6 +22,7 @@ namespace InnowiseProject.Application.UnitTests.Commands.Workers
             var command = new CreateWorkerCommand(workerDTO);
 
             var mockWorkerRepository = new Mock<IWorkerRepository>();
+
             mockWorkerRepository
                 .Setup(repo => repo.CreateWorker(It.IsAny<Worker>()))
                 .Returns(Task.CompletedTask)
