@@ -1,6 +1,5 @@
-﻿using InnowiseProject.Database.Repositories.Interfaces;
-using InnowiseProject.Application.Commands.Departments;
-using InnowiseProject.Application.DTO;
+﻿using InnowiseProject.Application.DTO;
+using InnowiseProject.Database.Repositories.Interfaces;
 using MediatR;
 
 namespace InnowiseProject.Application.Commands.Products

@@ -62,7 +62,7 @@ export function DepartmentsPage() {
             <Menu></Menu>
 
             <PageContent>
-                <Button value='Добавить отдел' onClick={() => handleOpenPopup()} />
+                <Button value='Create department' onClick={() => handleOpenPopup()} />
 
                 {
                     departments.map(department =>
@@ -72,18 +72,18 @@ export function DepartmentsPage() {
                     )
                 }
 
-                <PopupWindow title="Создание отдела" open={showAddDepartmentWindow}>
+                <PopupWindow title="Create department" open={showAddDepartmentWindow}>
                     <Form className='departmentsPage__form' onSubmit={AddDepartment} mode="onBlur">
                         <Input
-                            label="Название отдела"
+                            label="Add department name"
                             type="text"
                             value={newDepartmentName}
                             onChange={(event) => setNewDepartmentName(event.target.value)}
                             name="newDepartmentName"
-                            rules={{ required: "Обязательное поле" }} />
+                            rules={{ required: "Required field" }} />
 
-                        <Button value="Создать" type="submit" />
-                        <Button value="Отмена" onClick={() => setShowAddDepartmentWindow(false)} color="red" />
+                        <Button value="Ok" type="submit" />
+                        <Button value="Cancel" onClick={() => setShowAddDepartmentWindow(false)} color="red" />
                     </Form>
                 </PopupWindow>
             </PageContent>

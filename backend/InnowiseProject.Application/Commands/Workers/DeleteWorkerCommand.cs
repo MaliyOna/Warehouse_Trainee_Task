@@ -1,6 +1,4 @@
 ﻿using InnowiseProject.Database.Repositories.Interfaces;
-using InnowiseProject.Application.Commands.Products;
-using InnowiseProject.Application.DTO;
 using MediatR;
 
 namespace InnowiseProject.Application.Commands.Workers

@@ -4,3 +4,8 @@ Run application locally:
 2. Start backend
 3. Start frontend
     npm install & start
+
+
+default user:
+user name: admin
+password: HD9KhrZ69b5zrG3Trg5P7Z

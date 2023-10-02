@@ -1,5 +1,4 @@
 ﻿using InnowiseProject.Database.Models;
-using System.Collections.Generic;
 
 namespace InnowiseProject.Database.Repositories.Interfaces
 {

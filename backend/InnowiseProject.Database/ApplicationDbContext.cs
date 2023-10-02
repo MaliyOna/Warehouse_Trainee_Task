@@ -1,8 +1,6 @@
 ﻿using InnowiseProject.Database.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection.Emit;
 
 namespace InnowiseProject.Database
 {

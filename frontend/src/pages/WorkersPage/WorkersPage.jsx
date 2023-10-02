@@ -61,8 +61,8 @@ export function WorkersPage() {
                     <table className='workersPage__content__table'>
                         <thead>
                             <tr>
-                                <th>Имя</th>
-                                <th>Фамилия</th>
+                                <th>First name</th>
+                                <th>Last name</th>
                             </tr>
                         </thead>
 

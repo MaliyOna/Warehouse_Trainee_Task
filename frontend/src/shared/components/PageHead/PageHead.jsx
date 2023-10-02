@@ -18,7 +18,7 @@ export function PageHead() {
           <p>Warehouse</p>
         </div>
         <div className='pageHead__logout' onClick={handleLogoutClick}>
-          <span>Выход</span>
+          <span>Logout</span>
         </div>
       </div>
     </div>

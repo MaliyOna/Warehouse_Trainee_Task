@@ -28,16 +28,16 @@ export function UsersUpdate(props) {
 
   return (
     <>
-      <Button value='Изменить работника' size='small' onClick={handleUserUpdateClick}/>
+      <Button value='Edit worker' size='small' onClick={handleUserUpdateClick}/>
 
-      <PopupWindow title="Редактирование работника" open={showUserUpdateWindow}>
+      <PopupWindow title="Edit worker" open={showUserUpdateWindow}>
         <div className='usersUpdate__form'>
 
-          <Input label="Имя" type="text" value={firstName} onChange={event => setFirstName(event.target.value)} />
-          <Input label="Фамилия" type="text" value={lastName} onChange={event => setLastName(event.target.value)} />
+          <Input label="First name" type="text" value={firstName} onChange={event => setFirstName(event.target.value)} />
+          <Input label="Last name" type="text" value={lastName} onChange={event => setLastName(event.target.value)} />
 
-          <Button value="Сохранить" onClick={handleSubmit} />
-          <Button value="Отмена" onClick={() => setShowUserUpdateWindow(false)} color="red" />
+          <Button value="Save" onClick={handleSubmit} />
+          <Button value="Cancel" onClick={() => setShowUserUpdateWindow(false)} color="red" />
         </div>
       </PopupWindow>
     </>

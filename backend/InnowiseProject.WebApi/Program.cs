@@ -2,20 +2,14 @@
 using InnowiseProject.Application;
 using InnowiseProject.Database;
 using InnowiseProject.Database.Models;
-using InnowiseProject.Database.Repositories;
-using InnowiseProject.Database.Repositories.Interfaces;
 using InnowiseProject.WebApi.Configurations;
 using InnowiseProject.WebApi.Factories;
 using InnowiseProject.WebApi.Middlewares;
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using Serilog.Events;
-using System.Reflection;
 
 namespace InnowiseProject
 {
@@ -63,7 +57,8 @@ namespace InnowiseProject
                     });
             });
 
-            builder.Services.Configure<AuthenticationConfiguration>(builder.Configuration.GetSection("Authentication"));
+            services.Configure<AuthenticationConfiguration>(builder.Configuration.GetSection("Authentication"));
+            services.Configure<AdministrationConfiguration>(builder.Configuration.GetSection("Administration"));
             var authConfig = builder.Configuration.GetSection("Authentication").Get<AuthenticationConfiguration>();
 
             services.AddIdentity<Worker, IdentityRole>(options =>
@@ -77,7 +72,7 @@ namespace InnowiseProject
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
-            builder.Services.AddAuthentication(options =>
+            services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -107,7 +102,6 @@ namespace InnowiseProject
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

@@ -1,5 +1,4 @@
 ﻿using InnowiseProject.Database.Repositories.Interfaces;
-using InnowiseProject.Application.Commands.Departments;
 using MediatR;
 
 namespace InnowiseProject.Application.Commands.Products

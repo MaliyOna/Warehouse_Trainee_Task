@@ -1,6 +1,4 @@
 ﻿using InnowiseProject.Application.Commands.Departments;
-using InnowiseProject.Application.Commands.Products;
-using InnowiseProject.Application.Commands.Workers;
 using InnowiseProject.Application.DTO;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

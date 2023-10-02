@@ -1,22 +1,25 @@
 ﻿using InnowiseProject.Database;
 using InnowiseProject.Database.Constants;
 using InnowiseProject.Database.Models;
+using InnowiseProject.WebApi.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace InnowiseProject.WebApi.Middlewares
 {
     public class InitializeDatabaseMiddleware
     {
         private readonly RequestDelegate next;
-
+        private readonly IOptions<AdministrationConfiguration> administrationConfiguration;
         private static bool isInitialized = false;
 
         private static object locker = new();
 
-        public InitializeDatabaseMiddleware(RequestDelegate next)
+        public InitializeDatabaseMiddleware(RequestDelegate next, IOptions<AdministrationConfiguration> administrationConfiguration)
         {
             this.next = next;
+            this.administrationConfiguration = administrationConfiguration;
         }
 
         public async Task InvokeAsync(HttpContext context, IServiceProvider serviceProvider)
@@ -52,11 +55,6 @@ namespace InnowiseProject.WebApi.Middlewares
             {
                 await roleManager.CreateAsync(new IdentityRole(Roles.Admin));
             }
-
-            //if (!await roleManager.RoleExistsAsync(Roles.Worker))
-            //{
-            //    await roleManager.CreateAsync(new IdentityRole(Roles.Worker));
-            //}
         }
 
         private async Task CreateDefaultAdmin(IServiceProvider serviceProvider)
@@ -73,13 +71,13 @@ namespace InnowiseProject.WebApi.Middlewares
                 {
                     FirstName = "admin",
                     LastName = "admin",
-                    UserName = "admin",
+                    UserName = administrationConfiguration.Value.DefaultUserName,
                     IsSystem = true,
                 };
 
                 await userManager.CreateAsync(user);
 
-                var x = await userManager.AddPasswordAsync(user, "adminadminadmin");
+                await userManager.AddPasswordAsync(user, administrationConfiguration.Value.DefaultPassword);
                 await userManager.AddToRoleAsync(user, Roles.Admin);
             }
         }

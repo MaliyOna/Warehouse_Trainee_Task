@@ -29,27 +29,27 @@ export function UsersCreate(props) {
 
     return (
         <>
-            <Button value='Создать работника' size='small' onClick={handleUserCreateClick}/>
+            <Button value='Create worker' size='small' onClick={handleUserCreateClick}/>
 
-            <PopupWindow title="Создание работника" open={showUserCreateWindow}>
+            <PopupWindow title="Create worker" open={showUserCreateWindow}>
                 <Form className='usersCreate__form' onSubmit={handleSubmit} mode="onBlur">
                     <Input
-                        label="Имя"
+                        label="First name"
                         type="text"
                         value={firstName}
                         onChange={(event) => setFirstName(event.target.value)}
                         name="firstName"
-                        rules={{ required: "Обязательное поле" }} />
+                        rules={{ required: "Required field" }} />
                     <Input
-                        label="Фамилия"
+                        label="Last name"
                         type="text"
                         value={lastName}
                         onChange={(event) => setLastName(event.target.value)}
                         name="lastName"
-                        rules={{ required: "Обязательное поле" }} />
+                        rules={{ required: "Required field" }} />
                     
-                    <Button value="Создать" type="submit" />
-                    <Button value="Отмена" onClick={() => setShowUserCreateWindow(false)} color="red" />
+                    <Button value="Ok" type="submit" />
+                    <Button value="Cancel" onClick={() => setShowUserCreateWindow(false)} color="red" />
 
                 </Form>
             </PopupWindow>

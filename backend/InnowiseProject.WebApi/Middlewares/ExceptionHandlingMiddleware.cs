@@ -1,6 +1,4 @@
 ﻿using InnowiseProject.WebApi.Exceptions;
-using Microsoft.AspNetCore.Http;
-using System.Net;
 
 namespace InnowiseProject.WebApi.Middlewares
 {

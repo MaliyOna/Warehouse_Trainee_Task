@@ -1,13 +1,7 @@
-﻿using InnowiseProject.Database.Repositories.Interfaces;
-using InnowiseProject.Database.Repositories;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using InnowiseProject.Database.Repositories;
+using InnowiseProject.Database.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace InnowiseProject.Database
 {

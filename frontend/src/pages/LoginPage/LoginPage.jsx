@@ -19,30 +19,30 @@ export function LoginPage() {
             setToken(token);
             navigate("/workers");
         } catch (error) {
-            toast.error("Неправильное имя или пароль")
+            toast.error("Incorrect user name or password")
             setPassword("");
         }
     }
 
     return (
         <div className='loginPage'>
-            <div className='loginPage__title'>Вход</div>
+            <div className='loginPage__title'>Login</div>
             <Form className='loginPage__form' onSubmit={handleLogin}>
                 <Input name="userName"
-                    label="Введите имя пользователя:"
+                    label="Enter user name:"
                     type="text"
                     value={userName}
                     onChange={event => setUserName(event.target.value)}
-                    rules={{ required: "Обязательное поле" }} />
+                    rules={{ required: "Required field" }} />
 
                 <Input name="password"
-                    label="Введите пароль:"
+                    label="Enter password:"
                     type="password"
                     value={password}
                     onChange={event => setPassword(event.target.value)}
-                    rules={{ required: "Обязательное поле" }} />
+                    rules={{ required: "Required field" }} />
 
-                <Button value="Войти" type="submit" />
+                <Button value="Login" type="submit" />
             </Form>
         </div>
     );

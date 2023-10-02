@@ -186,9 +186,9 @@ export function DepartmentUpdatePage() {
 
             <PageContent>
                 <div className="departmentUpdatePage__block">
-                    <Input label="Название департамента" type="text" value={departmentName} onChange={event => setDepartmentName(event.target.value)} />
+                    <Input label="Department name" type="text" value={departmentName} onChange={event => setDepartmentName(event.target.value)} />
 
-                    <Button value="Сохранить название" onClick={() => updateDepartmentName()} />
+                    <Button value="Save" onClick={() => updateDepartmentName()} />
                 </div>
 
                 <div className="departmentUpdatePage__block">
@@ -198,7 +198,7 @@ export function DepartmentUpdatePage() {
                         </div>
                     )}
 
-                    <Button value="Создать продукт" onClick={() => setShowCreateProductWindow(true)} />
+                    <Button value="Create product" onClick={() => setShowCreateProductWindow(true)} />
                 </div>
 
                 <div className="departmentUpdatePage__block">
@@ -208,18 +208,18 @@ export function DepartmentUpdatePage() {
                         </div>
                     )}
 
-                    <Button value="Добавить работника" onClick={() => setShowUserFindWindow(true)} />
+                    <Button value="Add worker" onClick={() => setShowUserFindWindow(true)} />
                 </div>
 
-                {targetWorker && <PopupWindow title="Убрать пользователя из отдела" open={showDepartmentWorkerDelete}>
+                {targetWorker && <PopupWindow title="Remove user from department" open={showDepartmentWorkerDelete}>
                     <div>{targetWorker.lastName} {targetWorker.firstName}</div>
 
-                    <Button value="Удалить" onClick={() => handleDepartmentWorkerDelete()} />
-                    <Button value="Отмена" onClick={() => setShowDepartmentWorkerDelete(false)} color="red" />
+                    <Button value="Ok" onClick={() => handleDepartmentWorkerDelete()} />
+                    <Button value="Cancel" onClick={() => setShowDepartmentWorkerDelete(false)} color="red" />
                 </PopupWindow>}
 
-                <PopupWindow title="Поиск работника" open={showUserFindWindow}>
-                    <Input label="Введите фамилию:" type="text" onChange={(event) => setPartLastName(event.target.value)} />
+                <PopupWindow title="Find worker" open={showUserFindWindow}>
+                    <Input label="Enter last name:" type="text" onChange={(event) => setPartLastName(event.target.value)} />
 
                     <div className='departmentUpdatePage__popupWindow__filter'>
                         {allWorkers.filter(worker =>
@@ -228,36 +228,36 @@ export function DepartmentUpdatePage() {
                             <div className='departmentUpdatePage__worker' onClick={() => addWorker(worker.id)}>{worker.lastName} {worker.firstName}</div>
                         )}
 
-                        <Button value="Отмена" onClick={() => handleFindClose()} color="red" />
+                        <Button value="Cancel" onClick={() => handleFindClose()} color="red" />
                     </div>
                 </PopupWindow>
 
-                {targetProduct && <PopupWindow title="Изменения продукта" open={showProductUpdateDelete}>
+                {targetProduct && <PopupWindow title="Edit product" open={showProductUpdateDelete}>
                     <Input
-                        label="Название продукта"
+                        label="Product name"
                         type="text"
                         value={newProductName}
                         onChange={(event) => setNewProductName(event.target.value)}
                         name="targetProductName"
-                        rules={{ required: "Обязательное поле" }} />
+                        rules={{ required: "Required field" }} />
 
-                    <Button value="Сохранить" onClick={() => handleUpdateProduct()} />
-                    <Button value="Удалить" onClick={() => handleDeleteProduct()} color="red" />
-                    <Button value="Отмена" onClick={() => setShowProductUpdateDelete(false)} color="red" />
+                    <Button value="Save" onClick={() => handleUpdateProduct()} />
+                    <Button value="Delete" onClick={() => handleDeleteProduct()} color="red" />
+                    <Button value="Cancel" onClick={() => setShowProductUpdateDelete(false)} color="red" />
                 </PopupWindow>}
 
-                <PopupWindow title="Создание продукта" open={showCreateProductWindow}>
+                <PopupWindow title="Create product" open={showCreateProductWindow}>
                     <Form className='departmentUpdatePage__form' onSubmit={handleCreateProduct} mode="onBlur">
                         <Input
-                            label="Название продукта"
+                            label="Product name"
                             type="text"
                             value={newProductName}
                             onChange={(event) => setNewProductName(event.target.value)}
                             name="newProductName"
-                            rules={{ required: "Обязательное поле" }} />
+                            rules={{ required: "Required field" }} />
 
-                        <Button value="Создать" type="submit" />
-                        <Button value="Отмена" onClick={() => setShowCreateProductWindow(false)} color="red" />
+                        <Button value="Save" type="submit" />
+                        <Button value="Cancel" onClick={() => setShowCreateProductWindow(false)} color="red" />
                     </Form>
                 </PopupWindow>
 

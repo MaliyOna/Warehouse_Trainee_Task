@@ -13,12 +13,12 @@ export function UsersDelete(props) {
 
   return (
     <>
-      <Button value='Удалить пользавателя' size='small' color='red' onClick={() => setShowUserDeleteWindow(true)}/>
+      <Button value='Delete worker' size='small' color='red' onClick={() => setShowUserDeleteWindow(true)}/>
 
-      <PopupWindow title={`Удаление пользователя ${props.user.lastName} ${props.user.firstName}`} open={showUserDeleteWindow}>
+      <PopupWindow title={`Delete user ${props.user.lastName} ${props.user.firstName}`} open={showUserDeleteWindow}>
         <div>
-          <Button value="Удалить" onClick={handleUserDelete}/>
-          <Button value="Отмена" onClick={() => setShowUserDeleteWindow(false)} color="red" />
+          <Button value="Ok" onClick={handleUserDelete}/>
+          <Button value="Cancel" onClick={() => setShowUserDeleteWindow(false)} color="red" />
         </div>
       </PopupWindow>
     </>
